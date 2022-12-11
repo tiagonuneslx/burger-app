@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_button_content_description">Open Menu</string>
+    <string name="search_button_content_description">Search</string>
+    <string name="filter_button_content_description">Filter</string>
+</resources>

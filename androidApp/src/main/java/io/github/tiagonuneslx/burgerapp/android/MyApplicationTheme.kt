@@ -22,20 +22,24 @@ fun MyApplicationTheme(
 ) {
     val colors = if (darkTheme) {
         darkColors(
-            primary = Color(0xFFBB86FC),
+            primary = Color(0xFFEFB321),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(0xFF03DAC5),
+            background = Color(0xFF232229),
+            onBackground = Color.White,
         )
     } else {
         lightColors(
-            primary = Color(0xFF6200EE),
+            primary = Color(0xFFEFB321),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(0xFF03DAC5),
+            background = Color(0xFF232229),
+            onBackground = Color.White,
         )
     }
     val typography = Typography(
         body1 = TextStyle(
-            fontFamily = FontFamily.Default,
+            fontFamily = Montserrat,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp
         )
