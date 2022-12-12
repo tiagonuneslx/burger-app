@@ -21,7 +21,10 @@
 		C049A824294246CE000B574C /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C049A812294246CD000B574C /* Poppins-ExtraBold.ttf */; };
 		C049A826294246CE000B574C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C049A814294246CD000B574C /* Poppins-Regular.ttf */; };
 		C049A827294246CE000B574C /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C049A815294246CD000B574C /* Poppins-Thin.ttf */; };
-		C049A82F29460B14000B574C /* Burger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049A82E29460B14000B574C /* Burger.swift */; };
+		C049A82F29460B14000B574C /* BurgerStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049A82E29460B14000B574C /* BurgerStatic.swift */; };
+		C049A836294640DB000B574C /* BurgerAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C049A834294640DB000B574C /* BurgerAppModel.xcdatamodeld */; };
+		C049A83A29464392000B574C /* BurgerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049A83929464392000B574C /* BurgerProvider.swift */; };
+		C049A83C29464DDE000B574C /* BurgerPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049A83B29464DDE000B574C /* BurgerPersistentContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +57,10 @@
 		C049A812294246CD000B574C /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		C049A814294246CD000B574C /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		C049A815294246CD000B574C /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
-		C049A82E29460B14000B574C /* Burger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Burger.swift; sourceTree = "<group>"; };
+		C049A82E29460B14000B574C /* BurgerStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerStatic.swift; sourceTree = "<group>"; };
+		C049A835294640DB000B574C /* Burger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Burger.xcdatamodel; sourceTree = "<group>"; };
+		C049A83929464392000B574C /* BurgerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerProvider.swift; sourceTree = "<group>"; };
+		C049A83B29464DDE000B574C /* BurgerPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerPersistentContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C049A83D2946500F000B574C /* coredata */,
 				C049A82D29460AFF000B574C /* models */,
 				C049A80429423905000B574C /* project_fonts */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -134,9 +141,19 @@
 		C049A82D29460AFF000B574C /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C049A82E29460B14000B574C /* Burger.swift */,
+				C049A82E29460B14000B574C /* BurgerStatic.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		C049A83D2946500F000B574C /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+				C049A83929464392000B574C /* BurgerProvider.swift */,
+				C049A83B29464DDE000B574C /* BurgerPersistentContainer.swift */,
+				C049A834294640DB000B574C /* BurgerAppModel.xcdatamodeld */,
+			);
+			path = coredata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,9 +258,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C049A83C29464DDE000B574C /* BurgerPersistentContainer.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
-				C049A82F29460B14000B574C /* Burger.swift in Sources */,
+				C049A836294640DB000B574C /* BurgerAppModel.xcdatamodeld in Sources */,
+				C049A82F29460B14000B574C /* BurgerStatic.swift in Sources */,
+				C049A83A29464392000B574C /* BurgerProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +460,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C049A834294640DB000B574C /* BurgerAppModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C049A835294640DB000B574C /* Burger.xcdatamodel */,
+			);
+			currentVersion = C049A835294640DB000B574C /* Burger.xcdatamodel */;
+			path = BurgerAppModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

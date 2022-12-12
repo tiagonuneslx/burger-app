@@ -15,11 +15,15 @@ The app design was copied from [dribble](https://dribbble.com/shots/14952712-Foo
 3. Play with the Burgers data:
     - 3.1. Natively:
         - [X] 3.1.1. Using static list
-        - [ ] 3.1.2. Using static database
+        - [X] 3.1.2. Using static database (Android: Room, iOS: CoreData)
         - [ ] 3.1.3. Fetch from network
         - [ ] 3.1.4. Fetch from network + Caching in database
     - 3.2. KMM:
         - [X] 2.3.1. Create static list
-        - [ ] 3.2.2. Using static database
+        - [ ] 3.2.2. Using static database: SQLDelight
         - [ ] 3.2.3. Fetch from network
         - [ ] 3.2.4. Fetch from network + Caching in database
+4. Use a dependency injection framework:
+    - [X] 4.1. Android: Hilt
+    - [ ] 4.2. iOS?
+    - [ ] 4.3. KMM: Koin

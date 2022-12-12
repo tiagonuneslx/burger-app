@@ -4,7 +4,7 @@ import SwiftUI
  * 1. Build the Home page UI natively
  */
 struct HomeView: View {
-    let burgers = Burger.burgers
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]) var burgers: FetchedResults<Burger>
     let columns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
 
 	var body: some View {
@@ -54,13 +54,15 @@ struct HomeView: View {
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(burgers, id: \.id) { burger in
                     VStack(alignment: .leading) {
-                        Image(burger.thumbnailName)
+                        if let thumbnailName = burger.thumbnailName {
+                            Image(thumbnailName)
+                        }
                         VStack(alignment: .leading, spacing: 0) {
-                            Text(burger.name)
+                            Text(burger.name ?? "")
                                 .font(.custom("Montserrat", size: 15).weight(.heavy))
                                 .foregroundColor(.white)
                                 .padding(.bottom, 4)
-                            Text(burger.description)
+                            Text(burger.description_ ?? "")
                                 .font(.custom("Montserrat", size: 11).weight(.regular))
                                 .foregroundColor(.white)
                             HStack {

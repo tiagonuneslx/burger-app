@@ -3,7 +3,7 @@ import Foundation
 /**
  * 2.1. Create the Burger model natively
  */
-struct Burger: Identifiable {
+struct BurgerStatic: Identifiable {
     let id: Int
     let name: String
     let description: String
@@ -22,31 +22,31 @@ struct Burger: Identifiable {
 /**
  * 3.1.1. Play with the Burgers data using a static list (Native)
  */
-extension Burger {
-    static var burgers: [Burger] {
+extension BurgerStatic {
+    static var burgers: [BurgerStatic] {
         [
-            Burger(
+            BurgerStatic(
                 id: 0,
                 name: "Beef Burger",
                 description: "Onion with cheese",
                 price: 18,
                 thumbnailName: "BeefBurgerThumbnail"
             ),
-            Burger(
+            BurgerStatic(
                 id: 1,
                 name: "Chicken Burger",
                 description: "Cheese with chicken",
                 price: 12,
                 thumbnailName: "ChickenBurgerThumbnail"
             ),
-            Burger(
+            BurgerStatic(
                 id: 2,
                 name: "Classic Burger",
                 description: "Beef with lettuce",
                 price: 24,
                 thumbnailName: "ClassicBurgerThumbnail"
             ),
-            Burger(
+            BurgerStatic(
                 id: 3,
                 name: "Grilled Burger",
                 description: "Grilled chicken",
