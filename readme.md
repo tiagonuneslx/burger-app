@@ -6,7 +6,7 @@ The goal of this project is to practice iOS development and Kotlin Multiplatform
 I'm developing feature by feature on Android, which I'm already experienced with, and then
 I'm challenging myself to implement the exact same thing on iOS, and then using KMM.
 
-The app design was copied from [dribble](https://dribbble.com/shots/14952712-Food-Mobile-App-Design/attachments/6670047?mode=media) by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
+The app UI design was copied from [dribble](https://dribbble.com/shots/14952712-Food-Mobile-App-Design/attachments/6670047?mode=media) by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
 
 [X] 1. Build the Home page UI natively (on Android and iOS)
 2. Create the Burger model: 
