@@ -20,7 +20,7 @@ by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
 
 3. Play with the Burgers data:
 
-   3.1. Natively:
+    - 3.1. Natively:
 
         - [X] 3.1.1. Using static list
 
@@ -30,7 +30,7 @@ by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
 
         - [ ] 3.1.4. Fetch from network + Caching in database
 
-   3.2. KMM:
+    - 3.2. KMM:
 
         - [X] 2.3.1. Create static list
 
