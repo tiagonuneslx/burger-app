@@ -26,7 +26,7 @@ by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
 
         - [X] 3.1.2. Using static database (Android: Room, iOS: CoreData)
 
-        - [ ] 3.1.3. Fetch from network x
+        - [ ] 3.1.3. Fetch from network (Android: Ktor Client)
 
         - [ ] 3.1.4. Fetch from network + Caching in database
 
