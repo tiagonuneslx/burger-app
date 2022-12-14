@@ -3,41 +3,62 @@ package io.github.tiagonuneslx.burgerapp.android
 import io.github.tiagonuneslx.burgerapp.R
 import io.github.tiagonuneslx.burgerapp.android.db.dao.BurgerDao
 import io.github.tiagonuneslx.burgerapp.android.db.entity.Burger
+import io.github.tiagonuneslx.burgerapp.android.network.BurgerApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BurgerRepo @Inject constructor(private val burgerDao: BurgerDao) {
+class BurgerRepo @Inject constructor(
+    private val burgerDao: BurgerDao,
+    private val burgerApi: BurgerApi
+) {
 
     suspend fun prepopulateDatabase() {
         burgerDao.insertAll(
             Burger(
-                name = "Beef Burger",
-                description = "Onion with cheese",
-                price = 18f,
-                thumbnailResourceId = R.drawable.beef_burger_thumbnail
+                1,
+                "Beef Burger",
+                "Onion with cheese",
+                18f,
+                "/static/beef_burger_thumbnail.png"
             ),
             Burger(
-                name = "Chicken Burger",
-                description = "Cheese with chicken",
-                price = 12f,
-                thumbnailResourceId = R.drawable.chicken_burger_thumbnail
+                2,
+                "Chicken Burger",
+                "Cheese with chicken",
+                12f,
+                "/static/chicken_burger_thumbnail.png"
             ),
             Burger(
-                name = "Classic Burger",
-                description = "Beef with lettuce",
-                price = 24f,
-                thumbnailResourceId = R.drawable.classic_burger_thumbnail
+                3,
+                "Classic Burger",
+                "Beef with lettuce",
+                24f,
+                "/static/classic_burger_thumbnail.png"
             ),
             Burger(
-                name = "Grilled Burger",
-                description = "Grilled chicken",
-                price = 14f,
-                thumbnailResourceId = R.drawable.grilled_burger_thumbnail
-            )
+                4,
+                "Grilled Burger",
+                "Grilled chicken",
+                14f,
+                "/static/grilled_burger_thumbnail.png"
+            ),
         )
     }
 
-    fun getAll(): Flow<List<Burger>> = burgerDao.getAll()
+    fun getAll() = burgerDao.getAll()
+
+    /**
+     * 3.1.3. Fetch from network (Android: Ktor Client)
+     */
+    suspend fun getAllFromNetwork() = burgerApi.getAllBurgers()
+
+    /**
+     * 3.1.4. Fetch from network + Caching in database
+     */
+    suspend fun downloadAll() {
+        val burgers = getAllFromNetwork()
+        burgerDao.insertAll(burgers)
+    }
 }

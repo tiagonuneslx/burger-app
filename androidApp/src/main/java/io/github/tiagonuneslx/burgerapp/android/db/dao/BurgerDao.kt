@@ -9,6 +9,9 @@ interface BurgerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg burgers: Burger)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(burgers: List<Burger>)
+
     @Delete
     suspend fun delete(user: Burger)
 

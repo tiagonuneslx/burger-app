@@ -18,7 +18,7 @@ abstract class BurgerAppDb : RoomDatabase() {
                 /**
                  * 3.1.2. Play with the Burgers data natively using static database
                  */
-                .createFromAsset("burger-app.db")
+                //.createFromAsset("burger-app.db")
                 .build()
     }
 }

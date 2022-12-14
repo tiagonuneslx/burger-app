@@ -15,4 +15,10 @@ class HomeViewModel @Inject constructor(
 
     val burgers =
         burgerRepo.getAll().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+
+    init {
+        viewModelScope.launch {
+            burgerRepo.downloadAll()
+        }
+    }
 }

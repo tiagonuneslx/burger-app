@@ -6,6 +6,7 @@ plugins {
     kotlin("multiplatform") version "1.7.20" apply false
     id("com.google.devtools.ksp") version "1.7.20-1.0.8" apply false
     id("com.google.dagger.hilt.android") version "2.44.2" apply false
+    kotlin("plugin.serialization") version "1.7.20" apply false
 }
 
 tasks.register("clean", Delete::class) {

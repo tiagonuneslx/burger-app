@@ -1,6 +1,7 @@
 package io.github.tiagonuneslx.burgerapp.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -13,10 +14,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,9 +28,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.tiagonuneslx.burgerapp.android.db.entity.Burger
+import io.github.tiagonuneslx.burgerapp.android.network.BurgerApi
 
 /**
  * 1. Build the Home page UI natively
@@ -62,12 +62,10 @@ private fun Home(burgers: List<Burger>?) {
     val backgroundColor = MaterialTheme.colors.background
     LaunchedEffect(systemUiController, backgroundColor) {
         systemUiController.setStatusBarColor(
-            color = backgroundColor,
-            darkIcons = false
+            color = backgroundColor, darkIcons = false
         )
         systemUiController.setNavigationBarColor(
-            color = backgroundColor,
-            darkIcons = false
+            color = backgroundColor, darkIcons = false
         )
     }
     Surface(
@@ -101,8 +99,7 @@ private fun TopAppBar() {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
     ) {
         IconButton(onClick = { }) {
             Image(
@@ -111,14 +108,12 @@ private fun TopAppBar() {
                 modifier = Modifier.size(28.dp, 24.dp)
             )
         }
-        Image(
-            painter = painterResource(id = R.drawable.ic_search),
+        Image(painter = painterResource(id = R.drawable.ic_search),
             contentDescription = stringResource(R.string.search_button_content_description),
             modifier = Modifier
                 .clip(CircleShape)
                 .clickable { }
-                .size(52.dp, 52.dp)
-        )
+                .size(52.dp, 52.dp))
     }
 }
 
@@ -139,22 +134,17 @@ private fun FiltersRow() {
             ) {}
             Spacer(Modifier.width(10.dp))
             Text(
-                "Burgers",
-                fontFamily = Poppins,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                "Burgers", fontFamily = Poppins, fontSize = 16.sp, fontWeight = FontWeight.Bold
             )
         }
         Text("Pasta", fontFamily = Poppins, fontSize = 14.sp)
         Text("Salads", fontFamily = Poppins, fontSize = 14.sp)
-        Image(
-            painter = painterResource(id = R.drawable.ic_filter),
+        Image(painter = painterResource(id = R.drawable.ic_filter),
             contentDescription = stringResource(R.string.filter_button_content_description),
             modifier = Modifier
                 .clip(RoundedCornerShape(12.dp))
                 .clickable { }
-                .size(48.dp, 48.dp)
-        )
+                .size(48.dp, 48.dp))
     }
 }
 
@@ -170,25 +160,31 @@ private fun BurgersGrid(burgers: List<Burger>) {
                 Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .clickable { }) {
-                Image(
-                    painter = painterResource(id = burger.thumbnailResourceId),
-                    contentDescription = burger.name,
-                    Modifier
+                val thumbnailUrl by remember {
+                    derivedStateOf {
+                        (BurgerApi.BaseUrl + burger.thumbnailUrl).also {
+                            Log.d("MainActivity", "thumbnailUrl: $it")
+                        }
+                    }
+                }
+                AsyncImage(
+                    model = thumbnailUrl,
+                    contentDescription = null,
+                    onError = { error ->
+                        Log.d("MainActivity", "AsyncImage error: ${error.result.throwable}")
+                    },
+                    modifier = Modifier
                         .fillMaxWidth()
                         .aspectRatio(1.2307693f, false)
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Column(Modifier.padding(horizontal = 16.dp)) {
                     Text(
-                        burger.name,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.ExtraBold
+                        burger.name, fontSize = 15.sp, fontWeight = FontWeight.ExtraBold
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        burger.description,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Normal
+                        burger.description, fontSize = 11.sp, fontWeight = FontWeight.Normal
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Row(
@@ -206,8 +202,7 @@ private fun BurgersGrid(burgers: List<Burger>) {
                                 .clip(CircleShape)
                                 .size(24.dp)
                                 .clickable { }
-                                .background(Color.Black)
-                        ) {
+                                .background(Color.Black)) {
                             Text(
                                 "+",
                                 fontSize = 16.sp,
