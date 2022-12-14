@@ -10,7 +10,7 @@ The app UI design was copied
 from [dribble](https://dribbble.com/shots/14952712-Food-Mobile-App-Design/attachments/6670047?mode=media)
 by [Ghulam Rasool 🚀](https://dribbble.com/ghulaam-rasool).
 
-[X] 1. Build the Home page UI natively (on Android and iOS)
+- [X] 1. Build the Home page UI natively (on Android and iOS)
 
 2. Create the Burger model:
 
