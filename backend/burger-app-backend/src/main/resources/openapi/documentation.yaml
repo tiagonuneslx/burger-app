@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: burger-app API
+  description: burger-app API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: localhost
+paths:
+  /burgers:
+    get:
+      summary: Returns a list of burgers
+      responses:
+        "200":
+          description: A JSON array of burgers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Burger'
+
+components:
+  schemas:
+    Burger:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Beef Burger"
+        description:
+          type: string
+          example: "Onion with cheese"
+        price:
+          type: number
+          example: 18.00
+        thumbnailUrl:
+          type: string
+          example: "/static/beef_burger_thumbnail.png"

@@ -1,0 +1,1 @@
+rootProject.name = "burger-app-backend"
